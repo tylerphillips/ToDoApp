@@ -16,9 +16,9 @@ var ToDoObjectCollectionClass = Parse.Collection.extend({
   	model: toDoObject
 });
 
-var toDoObjects = new ToDoObjectCollectionClass()
+var toDoObjectCollection = new ToDoObjectCollectionClass()
 
-
+ //  // OLD ignore
 // toDoObject.save(null, {
 //   success: function(toDoObject) {
 //     // Execute any logic that should take place after the object is saved.
@@ -33,32 +33,17 @@ var toDoObjects = new ToDoObjectCollectionClass()
 
 
 
-// function getFormValues () {
-// 	var toDoResult	= $('.input-medium').val();}
-	// var toDoSummary 	= $('.todo-summary').val();
-
-// 	var formData = {
-// 		name: nameVal,
-// 		birthday: birthVal,
-// 		hometown: homeVal,
-// 		job: jobVal,
-// 		phone: teleVal
-// 	}
-
-// 	return formData;
-
-// }
-
-// toDoObjects.fetch({
+// $('document').ready(function() {
+// toDoObjectCollection.fetch({
 //   success: function(collection) {
-//     collection.each(function(toDoObject){
-//       addToSideBar(toDoObject)
+//     collection.each(function(toDoObjectName){
+//       addToSideBar(toDoObjectName)
 //     })
 //   }
-// })
+// });
 
 // toDoObject.fetch({
-//   success: function(toDoObject) {
+//   success: function(toDoObjectName) {
 //     // The object was refreshed successfully.
 //   },
 //   error: function(toDoObject, error) {
@@ -66,16 +51,23 @@ var toDoObjects = new ToDoObjectCollectionClass()
 //     // error is a Parse.Error with an error code and description.
 //   }
 // });
+// });
+
+// end document ready
 
 
 // Saves in toDoObjectName in Parse when submit button is pressed
 $('.submit').click(function(){
 	if (validateForm()) {
   		var toDoObject = new ToDoObject();
-  		toDoObject.set('toDoObjectName', $('input').val());
+  		toDoObject.set('toDoObject', $('input').val());
+
+  		var toDoValue = $('input').val();
+	    $('.toDo').text(toDoValue);
  
   		toDoObject.save(null, {
     		success: function(result){
+    			alert("Thank you for submitting your ToDo object. Your identification number is " + toDoObject.id);
       		// createToDo(result)
     		},
     		error: function(result, error){
@@ -83,6 +75,38 @@ $('.submit').click(function(){
     	});	
   	};
 });
+
+// Uncaught TypeError: Cannot read property 'className' of undefined 
+// Uncaught TypeError: Object [object Object] has no method 'each' 
+// var toDoObjectName = new ToDoObjectCollectionClass()
+// toDoObject.fetch({
+// 	success: function(toDoObject) {
+// 		toDoObject.each(function(object){
+// 			console.warn.object;
+// 		});
+// 	},
+// 	error: function(toDoObject, error) {
+
+// 	}
+// });
+
+// toDoObject.fetch({
+// 	success: function(toDoObject) {
+// 		var toDoTask = toDoObject.get("toDoObjectName")
+// 	}
+// });
+
+// function createTask(toDoObject) {
+//   var li = $('<li>'+toDoObject.get('toDoObject'))
+//   $('.toDoObject').append(li)
+//   showToDo()
+// };
+
+// function showToDo(toDoObject) {
+// 	var toDoObject = new ToDoObject();
+// 	$('input').val(toDoObject.get('toDo'))
+// };
+
 
 function validateForm() {
 	var validate = true																				
