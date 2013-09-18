@@ -132,6 +132,8 @@ body {
 .input-medium {
     padding: 5px;
     border-radius: 5px;
+    height: 180px;
+    width: 350px;
 }
 
 .description {
@@ -141,4 +143,11 @@ body {
     padding: 5px;
     border-radius: 5px;
     box-shadow: inset 2px 2px #979090;
+}
+
+.task-preview {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background: blue;
 }
